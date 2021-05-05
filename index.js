@@ -277,7 +277,7 @@ app.post("/hl7_message", async (req, res) => {
                         message: message,
                         response: {
                             msg: response,
-                            client: _.pick(client, [
+                            data: _.pick(client, [
                                 "id",
                                 "f_name",
                                 "m_name",
@@ -555,7 +555,7 @@ app.post("/hl7_message", async (req, res) => {
                             message: message,
                             response: {
                                 msg: response,
-                                client: _.pick(client, [
+                                data: _.pick(client, [
                                     "id",
                                     "f_name",
                                     "m_name",
@@ -604,7 +604,7 @@ app.post("/hl7_message", async (req, res) => {
                             message: message,
                             response: {
                                 msg: response,
-                                client: _.pick(client, [
+                                data: _.pick(client, [
                                     "group_id",
                                     "art_date",
                                     "client_type",
@@ -666,6 +666,8 @@ app.post("/hl7_message", async (req, res) => {
                     PLACER_APPOINTMENT_NUMBER = result[i].value;
                 } else if (key == "GODS_NUMBER") {
                     //GODS_NUMBER = result[20].value;
+                } else if (key == "NUMBER") {
+                    PLACER_APPOINTMENT_NUMBER = result[i].value;
                 } else if (key == "APPOINTMENT_REASON") {
                     APPOINTMENT_REASON = result[i].value;
                 } else if (key == "APPOINTMENT_TYPE") {
@@ -820,7 +822,7 @@ app.post("/hl7_message", async (req, res) => {
                             message: message,
                             response: {
                                 msg: response,
-                                appointment: appointment
+                                data: appointment
                             }
                         });
                     })
@@ -861,7 +863,7 @@ app.post("/hl7_message", async (req, res) => {
                             message: message,
                             response: {
                                 msg: response,
-                                appointment: appointment
+                                data: appointment
                             }
                         });
                     })
@@ -984,7 +986,7 @@ app.post("/hl7_message", async (req, res) => {
                             message: message,
                             response: {
                                 msg: response,
-                                client: oru
+                                data: oru
                             }
                         });
                     })
@@ -1017,7 +1019,7 @@ app.post("/hl7_message", async (req, res) => {
                             message: message,
                             response: {
                                 msg: response,
-                                client: oru
+                                data: oru
                             }
                         });
                     })
@@ -1059,7 +1061,7 @@ app.post("/hl7_message", async (req, res) => {
                             message: message,
                             response: {
                                 msg: response,
-                                client: oru
+                                data: oru
                             }
                         });
                     })
@@ -1507,8 +1509,8 @@ app.post("/hl7-sync-observation", async (req, res) => {
 
 });
 
-app.listen(6000, () => {
-    console.log("Ushauri IL listening on port 6000");
+app.listen(1440, () => {
+    console.log("Ushauri IL listening on port 1440");
 });
 
 //convert json object to key value pairs
@@ -1528,4 +1530,6 @@ function get_json(jsonObj) {
 
     return output;
 }
+
+
 
